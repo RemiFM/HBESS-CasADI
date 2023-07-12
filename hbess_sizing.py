@@ -40,7 +40,7 @@ V_cell_HP = cols1[1].number_input('Nominal voltage (V)', value=2.3)     # V
 I_cell_HP = cols1[1].number_input('Maximum current (A)', value=92)      # A
 C_cell_HP = cols1[1].number_input('Cost (€)', value=38)                 # €
 E_cell_HP = (Q_cell_HP/1000) * V_cell_HP                                # kWh
-V_pack = cols1[1].number_input('Nominal Pack Voltage (V)', value=1000, disabled= not bV)
+V_pack = cols1[1].number_input('Nominal Pack Voltage (V)', value=120, disabled= not bV)
 V_pack = V_pack if bV else 0;
 layout[0].divider()
 
