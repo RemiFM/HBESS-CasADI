@@ -183,10 +183,10 @@ if run:
             opti.set_initial(SERIES_HP, round(V_pack / V_cell_HP))  # Set initial value of E_HE
             
         else:
-            opti.set_initial(SERIES_HE, 10)  # Set initial value of E_HE
-            opti.set_initial(SERIES_HP, 10)  # Set initial value of E_HE
-        opti.set_initial(PARALLEL_HE, 200)
-        opti.set_initial(PARALLEL_HP, 10)
+            opti.set_initial(SERIES_HE, 1)  # Set initial value of E_HE
+            opti.set_initial(SERIES_HP, 1)  # Set initial value of E_HE
+        opti.set_initial(PARALLEL_HE, 2000)
+        opti.set_initial(PARALLEL_HP, 0.1)
 
         # Define the solver and solve the problem
         opti.minimize(objective)
