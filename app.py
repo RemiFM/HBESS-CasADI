@@ -194,7 +194,7 @@ if run:
         opti.solver('ipopt', options)
         sol = opti.solve()
 
-    layout[0].subheader(f"Optimal total cost: :blue[**{'€ {:,.2f}'.format(sol.value(objective))} €**]")
+    layout[0].subheader(f"Optimal total cost: :green[**{'€ {:,.2f}'.format(sol.value(objective))} €**]")
     layout_left = layout[0].columns(2, gap="large")
 
     pack_HE = { 'parameter': ['series', 'parallel', 'total energy', 'nominal voltage', 'maximum current', 'rated current', 'total cost'],
