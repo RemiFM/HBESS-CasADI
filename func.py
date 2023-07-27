@@ -1,6 +1,7 @@
 import altair as alt
 
 color_range = ["#0072BD", "#D95319", "#EDB120"]
+color_range = ['#95C11E', '#5BC5F1', '#0096A9']
 
 def get_SOC(P, E, dt):
     # P     [W]
