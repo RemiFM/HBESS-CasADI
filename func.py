@@ -122,6 +122,35 @@ def plot_currents(df_current):
     )
     return chart
 
+def plot_voltages(df_voltage):
+    # Scale inputs
+    chart_data = df_voltage.copy()                                  #copy of DataFrame for scaling
+    chart_data.loc[:, 't'] = chart_data.loc[:, 't'] / 60            #seconds to hours
+
+    V_min = min(chart_data['V_HE'].min(), chart_data['V_HP'].min())
+    V_max = max(chart_data['V_HE'].max(), chart_data['V_HP'].max())
+
+    # Restructure DataFrame
+    chart_data = (chart_data
+                  .loc[:, ['t', 'V_HE', 'V_HP']]
+                  .melt('t'))
+
+    # Create chart object
+    chart = (
+        alt.Chart(data = chart_data)
+        .mark_line(interpolate='linear')
+        .encode(
+        x = alt.X('t', axis = alt.Axis(title = 'Time (min)', grid = True)),
+        y = alt.Y('value', axis = alt.Axis(title = 'Voltage (V)'), scale=alt.Scale(domain=[V_min/1.02, V_max*1.02])),
+        color = alt.Color('variable', sort = ['V_HE'], scale=alt.Scale(range=color_range[1:3]), legend = alt.Legend(orient = 'bottom', title = 'None', titleOpacity = 0, titlePadding = 0, titleFontSize = 0)) 
+        )
+        .properties(
+            height = 380,
+        )
+        .interactive()
+    )
+    return chart
+
 
 
 def display_pack(df_pack):
